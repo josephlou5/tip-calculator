@@ -1,2 +1,3 @@
-# tip-calculator
-A static webpage for calculating tips
+# Tip Calculator
+
+A static webpage for calculating tips.
