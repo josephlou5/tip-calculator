@@ -46,6 +46,27 @@ export const CHANGELOG: Version[] = [
       },
     ],
   },
+  {
+    version: [1, 0],
+    timestamp: "2025-03-14 13:06",
+    description: [
+      {
+        text: "Added working tip calculator",
+        children: [
+          {
+            text:
+              "Input an amount to get a range of tip values and their " +
+              "corresponding percentages.",
+          },
+          {
+            text:
+              "Additional tips will also be shown which result in a whole " +
+              "dollar total.",
+          },
+        ],
+      },
+    ],
+  },
 ].sort((v1, v2) => -cmpVersions(v1.version, v2.version));
 
 /** Returns the current version number as a string. */
