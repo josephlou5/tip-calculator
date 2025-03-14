@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { getCurrentVersion } from "./changelog/changelog";
 import { TITLE } from "./metadata";
 
 /** Tip calculator. */
@@ -11,7 +12,7 @@ export default function Page() {
         <span className="h6 fst-italic text-secondary ms-3">
           (
           <Link href="/changelog" className="text-reset">
-            v0.1
+            {getCurrentVersion()}
           </Link>
           )
         </span>

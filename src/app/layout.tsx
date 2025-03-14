@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.css";
 
+import Breadcrumbs from "./breadcrumbs";
 import { metadataForPage } from "./metadata";
 
 export const metadata = metadataForPage();
@@ -13,7 +14,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="p-3">{children}</div>
+        <div className="p-3">
+          <Breadcrumbs />
+          {children}
+        </div>
       </body>
     </html>
   );

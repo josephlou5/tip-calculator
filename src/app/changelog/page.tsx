@@ -1,4 +1,5 @@
 import { metadataForPage } from "../metadata";
+import { CHANGELOG, Description, versionToString } from "./changelog";
 
 export const metadata = metadataForPage("Changelog");
 
@@ -8,15 +9,37 @@ export default function Page() {
     <>
       <div className="h1">Changelog</div>
 
-      <div className="mb-2">
-        <div>
-          <span className="fs-4">v0.1</span>
-          <span className="fst-italic text-muted ms-3">2025-03-13 21:57</span>
+      {CHANGELOG.map((version, i) => (
+        <div key={i} className="mb-2">
+          <div>
+            <span className="fs-4">{versionToString(version.version)}</span>
+            <span className="fst-italic text-muted ms-3">
+              {version.timestamp}
+            </span>
+          </div>
+          <VersionDescriptions descriptions={version.description} />
         </div>
-        <ul>
-          <li>Initial release</li>
-        </ul>
-      </div>
+      ))}
     </>
+  );
+}
+
+/** Recursively displays an array of version descriptions. */
+function VersionDescriptions({
+  descriptions,
+}: {
+  descriptions: Description[];
+}) {
+  return (
+    <ul>
+      {descriptions.map((desc, i) => (
+        <li key={i}>
+          {desc.text}
+          {desc.children && (
+            <VersionDescriptions descriptions={desc.children} />
+          )}
+        </li>
+      ))}
+    </ul>
   );
 }
