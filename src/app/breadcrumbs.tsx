@@ -3,9 +3,6 @@
 import Link from "next/link";
 import { useSelectedLayoutSegments } from "next/navigation";
 
-// We need to manually link to the GitHub Page home because `href="/"` uses the
-// configured base path.
-const HOME_LINK = "https://josephlou5.github.io/";
 const BASE_PATH = "tip-calculator";
 
 const NOT_FOUND_SEGMENT = "/_not-found";
@@ -27,9 +24,7 @@ export default function Breadcrumbs() {
     <nav aria-label="breadcrumb">
       <ol className="breadcrumb">
         <li className="breadcrumb-item">
-          {/* Manually link to the GitHub Page home because we can't navigate
-              beyond `basePath`. */}
-          <Link href={HOME_LINK}>Home</Link>
+          <Link href="../">Home</Link>
         </li>
         {segments.map((segment, i) => {
           const segmentTitle = segment

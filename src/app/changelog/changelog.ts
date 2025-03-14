@@ -67,6 +67,20 @@ export const CHANGELOG: Version[] = [
       },
     ],
   },
+  {
+    version: [1, 1],
+    timestamp: "2025-03-14 13:36",
+    description: [
+      {
+        text: "Fix Home breadcrumb link",
+        children: [
+          {
+            text: "Would be ideal if I didn't have to hardcode the GitHub link",
+          },
+        ],
+      },
+    ],
+  },
 ].sort((v1, v2) => -cmpVersions(v1.version, v2.version));
 
 /** Returns the current version number as a string. */
