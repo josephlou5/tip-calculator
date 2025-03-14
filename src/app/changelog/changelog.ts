@@ -81,6 +81,11 @@ export const CHANGELOG: Version[] = [
       },
     ],
   },
+  {
+    version: [1, 2],
+    timestamp: "2025-03-14 14:08",
+    description: [{ text: "Add footer with GitHub link" }],
+  },
 ].sort((v1, v2) => -cmpVersions(v1.version, v2.version));
 
 /** Returns the current version number as a string. */

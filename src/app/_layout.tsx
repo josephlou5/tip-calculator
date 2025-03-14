@@ -1,14 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { useSelectedLayoutSegments } from "next/navigation";
+import {
+  useSelectedLayoutSegment,
+  useSelectedLayoutSegments,
+} from "next/navigation";
 
-const BASE_PATH = "tip-calculator";
+import { BASE_PATH } from "./metadata";
 
 const NOT_FOUND_SEGMENT = "/_not-found";
 
 /** Displays breadcrumbs for page navigation. */
-export default function Breadcrumbs() {
+export function Breadcrumbs() {
   const segments = useSelectedLayoutSegments();
   if (segments.includes(NOT_FOUND_SEGMENT)) {
     // This is a "not found" page. Don't show the breadcrumbs.
@@ -44,7 +47,8 @@ export default function Breadcrumbs() {
             );
           }
           if (i > 0) {
-            // Skip the base path in the link, since it will be
+            // Skip the base path in the link, since the links are built
+            // relative to it already.
             href.push(segment);
           }
           return (
@@ -55,5 +59,22 @@ export default function Breadcrumbs() {
         })}
       </ol>
     </nav>
+  );
+}
+
+/** Displays a page footer. */
+export function Footer() {
+  const segment = useSelectedLayoutSegment();
+  if (segment === NOT_FOUND_SEGMENT) return <></>;
+
+  const githubLink = `https://github.com/josephlou5/${BASE_PATH}`;
+  return (
+    <div className="text-secondary" style={{ fontSize: "0.8em" }}>
+      See the source code at{" "}
+      <a href={githubLink} target="_blank">
+        {githubLink}
+      </a>
+      .
+    </div>
   );
 }

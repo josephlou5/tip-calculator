@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.css";
 
-import Breadcrumbs from "./breadcrumbs";
+import { Breadcrumbs, Footer } from "./_layout";
 import { metadataForPage } from "./metadata";
 
 export const metadata = metadataForPage();
@@ -17,6 +17,7 @@ export default function RootLayout({
         <div className="p-3">
           <Breadcrumbs />
           {children}
+          <Footer />
         </div>
       </body>
     </html>
