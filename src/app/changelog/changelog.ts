@@ -72,7 +72,7 @@ export const CHANGELOG: Version[] = [
     timestamp: "2025-03-14 13:36",
     description: [
       {
-        text: "Fix Home breadcrumb link",
+        text: "Fixed Home breadcrumb link",
         children: [
           {
             text: "Would be ideal if I didn't have to hardcode the GitHub link",
@@ -84,7 +84,19 @@ export const CHANGELOG: Version[] = [
   {
     version: [1, 2],
     timestamp: "2025-03-14 14:08",
-    description: [{ text: "Add footer with GitHub link" }],
+    description: [{ text: "Added footer with GitHub link" }],
+  },
+  {
+    version: [1, 3],
+    timestamp: "2025-03-14 14:33",
+    description: [
+      {
+        text: "Added responsiveness",
+        children: [
+          { text: "The content is centered when the screen size is smaller." },
+        ],
+      },
+    ],
   },
 ].sort((v1, v2) => -cmpVersions(v1.version, v2.version));
 

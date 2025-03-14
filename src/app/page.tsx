@@ -75,8 +75,15 @@ export default function Page() {
   }
 
   return (
-    <>
-      <div className="mb-2">
+    <div
+      className={makeClassName([
+        "d-flex flex-column gap-3",
+        // Center the content when screen size is smaller than 'sm'.
+        "align-items-center align-items-sm-start",
+        "mb-2",
+      ])}
+    >
+      <div>
         <span className="h1">{TITLE}</span>
         <span className="h6 fst-italic text-secondary ms-3">
           (
@@ -87,7 +94,7 @@ export default function Page() {
         </span>
       </div>
 
-      <div className="row mb-2">
+      <div className="row">
         <div className="col-auto">
           <label htmlFor="amount-input" className="col-form-label">
             Amount
@@ -104,13 +111,14 @@ export default function Page() {
               className="form-control dollar-input"
               value={formatCents(amount)}
               aria-label="Amount"
+              style={{ width: "140px" }}
               onChange={inputOnChange}
             />
           </div>
         </div>
       </div>
 
-      <div className="table-responsive mb-2">
+      <div className="table-responsive">
         <table className="table table-bordered align-middle w-auto">
           <thead>
             <tr>
@@ -135,7 +143,7 @@ export default function Page() {
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 }
 
