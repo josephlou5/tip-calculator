@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { useSelectedLayoutSegments } from "next/navigation";
 
-const IS_DEV = process.env.NODE_ENV === "development";
+// We need to manually link to the GitHub Page home because `href="/"` uses the
+// configured base path.
+const HOME_LINK = "https://josephlou5.github.io/";
 const BASE_PATH = "tip-calculator";
 
 const NOT_FOUND_SEGMENT = "/_not-found";
@@ -15,18 +17,19 @@ export default function Breadcrumbs() {
     // This is a "not found" page. Don't show the breadcrumbs.
     return <></>;
   }
-  if (IS_DEV) {
-    // In local development, the base path is "/". In GitHub Pages, it will be
-    // "/tip-calculator", so add it here for development.
-    segments.unshift(BASE_PATH);
-  }
+  // In local development, the base path is "/". In GitHub Pages, the base path
+  // is automatically injected, but `segments` doesn't include it. So we need to
+  // manually add it in every time.
+  segments.unshift(BASE_PATH);
 
   const href: string[] = [];
   return (
     <nav aria-label="breadcrumb">
       <ol className="breadcrumb">
         <li className="breadcrumb-item">
-          <Link href="/">Home</Link>
+          {/* Manually link to the GitHub Page home because we can't navigate
+              beyond `basePath`. */}
+          <Link href={HOME_LINK}>Home</Link>
         </li>
         {segments.map((segment, i) => {
           const segmentTitle = segment
@@ -45,8 +48,8 @@ export default function Breadcrumbs() {
               </li>
             );
           }
-          if (!(IS_DEV && segment === BASE_PATH)) {
-            // Only link with the base path in non-dev environments.
+          if (i > 0) {
+            // Skip the base path in the link, since it will be
             href.push(segment);
           }
           return (

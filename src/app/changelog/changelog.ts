@@ -29,6 +29,23 @@ export const CHANGELOG: Version[] = [
       { text: "Added breadcrumbs" },
     ],
   },
+  {
+    version: [0, 3],
+    timestamp: "2025-03-14 00:06",
+    description: [
+      {
+        text: "Fixed breadcrumbs",
+        children: [
+          {
+            text:
+              "GitHub Pages was doing funny stuff with regard to the " +
+              "configured base path. The breadcrumbs didn't work as expected " +
+              "due to this.",
+          },
+        ],
+      },
+    ],
+  },
 ].sort((v1, v2) => -cmpVersions(v1.version, v2.version));
 
 /** Returns the current version number as a string. */
